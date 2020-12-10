@@ -1,0 +1,2 @@
+rootProject.name = "BaseMavenProject"
+include ':app'
