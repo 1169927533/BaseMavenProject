@@ -1,0 +1,75 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion depend.compileSdkVersion
+    buildToolsVersion depend.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion depend.minSdkVersion
+        targetSdkVersion depend.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+
+    api depend.appCompat()
+    api depend.constraintlayout()
+    testImplementation "junit:junit:4.13.1"
+    androidTestImplementation  "androidx.test.ext:junit:1.1.2"
+    androidTestImplementation "androidx.test:core:1.2.0"
+    api depend.core_ktx()
+    api depend.kotlin_stdlib()
+
+    //权限请求
+    api 'pub.devrel:easypermissions:3.0.0'
+    api "androidx.recyclerview:recyclerview:${depend.appcompat}"
+
+    //kotlin协程
+    api depend.kotlin_core()
+    api depend.kotlin_kandroid()
+    api depend.kotlin_kcm()
+    api depend.kotlin_multidex()
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.7.2'//RxJava2CallAdapterFactory
+    api 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'
+
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'
+
+    /**
+     * glide图片加载
+     */
+    api "com.github.bumptech.glide:glide:4.11.0"
+    annotationProcessor "com.github.bumptech.glide:compiler:4.11.0"
+
+    implementation depend.lifecycle_extensions()
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0'
+    api 'com.android.support.constraint:constraint-layout:2.0.1'//android新得动画库
+
+    /**
+     * 使用阿里的路由跳转
+     */
+    api 'com.alibaba:arouter-api:1.5.0'
+}

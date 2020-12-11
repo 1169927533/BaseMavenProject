@@ -2,7 +2,7 @@ public class DependComp {
     int compileSdkVersion = 29
     String buildToolsVersion = '29.0.3'
 
-    int minSdkVersion = 26
+    int minSdkVersion = 17
     int targetSdkVersion = 29
     String supportVersion = '29.1.1'
 
@@ -19,6 +19,8 @@ public class DependComp {
 
     String lifecycle_version = "2.2.0"
     String lifecycle_extensions = "2.2.0"
+    String lifecycle_runtime = "2.2.0"
+    String recyclerview = "1.1.0"
 
     String appCompat() {
         return "androidx.appcompat:appcompat:${appcompat}"
@@ -76,17 +78,27 @@ public class DependComp {
         return "com.android.support:multidex:1.0.3"
     }
 
-    String lifecycle_version(){
+    String lifecycle_version() {
         return "androidx.lifecycle:lifecycle-runtime-ktx:${lifecycle_version}"
     }
-    String lifecycle_extensions(){
+
+    String lifecycle_extensions() {
         return "androidx.lifecycle:lifecycle-extensions:${lifecycle_extensions}"
     }
 
-    String viewmodel(){
+    String viewmodel() {
         return "androidx.lifecycle:lifecycle-viewmodel-ktx:${lifecycle_version}"
     }
-    String liceData(){
+
+    String liceData() {
         return "androidx.lifecycle:lifecycle-livedata-ktx:${lifecycle_version}"
+    }
+
+    String lifecycleruntime() {
+        return "androidx.lifecycle:lifecycle-runtime:${lifecycle_runtime}"
+    }
+
+    String recyclerview() {
+        return "androidx.recyclerview:recyclerview:${recyclerview}"
     }
 }

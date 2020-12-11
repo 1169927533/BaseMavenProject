@@ -12,9 +12,10 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/baseYu" />
+            <option value="$PROJECT_DIR$/comp_base" />
             <option value="$PROJECT_DIR$/gradle_plugin" />
-            <option value="$PROJECT_DIR$/lib_oop" />
-            <option value="$PROJECT_DIR$/lib_util" />
+            <option value="$PROJECT_DIR$/module_smartrecycleview" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
