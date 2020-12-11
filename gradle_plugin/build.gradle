@@ -18,4 +18,3 @@ uploadArchives {
         pom.version = '1.0.0'//版本名称
     }
 }
-
