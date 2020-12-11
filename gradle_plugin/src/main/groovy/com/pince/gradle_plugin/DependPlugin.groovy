@@ -1,3 +1,5 @@
+package com.pince.gradle_plugin
+
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
