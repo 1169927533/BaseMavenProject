@@ -1,0 +1,21 @@
+apply plugin: 'groovy'//加入groovy的能力
+apply plugin: 'maven'//导入maven插件
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+}
+
+repositories {
+    jcenter()
+}
+//发布代码到本地
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: uri('../repro'))//仓库路径，此处是项目目录下的repo文件夹
+        pom.groupId = 'com.pince.gradle_plugin'//groupid自行定义，一般是包名
+        pom.artifactId = 'plugin'//自行定义
+        pom.version = '1.0.0'//版本名称
+    }
+}
+
