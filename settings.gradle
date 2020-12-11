@@ -1,3 +1,6 @@
 rootProject.name = "BaseMavenProject"
 include ':app'
 include ':gradle_plugin'
+//include ':comp_base'
+include ':lib_util'
+include ':lib_oop'
