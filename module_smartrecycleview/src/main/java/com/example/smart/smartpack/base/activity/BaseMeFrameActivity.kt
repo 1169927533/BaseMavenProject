@@ -10,8 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 
 import com.example.smart.smartpack.R
-import com.hapi.base_mvvm.activity.ToolbarMode
-import com.hapi.base_mvvm.uitil.ClickUtil
+import com.uppack.lksmall.baseyu.weight.util.ClickUtil
 
 /**
  *Create time 2020/8/27
@@ -51,19 +50,19 @@ abstract class BaseMeFrameActivity : AppCompatActivity(), Toolbar.OnMenuItemClic
             }
             mToolbar = mInflater.inflate(toolbarLayoutId, null) as Toolbar
             var barHeight =
-                    resources.getDimensionPixelOffset(R.dimen.abc_action_bar_default_height_material)
+                resources.getDimensionPixelOffset(R.dimen.abc_action_bar_default_height_material)
             mRootView.addView(
-                    mToolbar, ViewGroup.LayoutParams(
+                mToolbar, ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     barHeight
-            )
+                )
             )
             if (isTitleCenter()) {
                 centerTitle = mToolbar?.findViewById(R.id.toolbar_title_tv)
             }
 
             val mode = requestToolbarMode()
-            if (mode == ToolbarMode.Layer) {
+            if (mode == 1) {
                 val params = mContentView!!.layoutParams as FrameLayout.LayoutParams
                 params?.let {
                     it.setMargins(
@@ -87,7 +86,6 @@ abstract class BaseMeFrameActivity : AppCompatActivity(), Toolbar.OnMenuItemClic
     abstract fun init()
     abstract fun getLayoutId(): Int
     abstract fun showLoading(toShow: Boolean)
-
 
 
     open fun requestToolbarMode(): Int {

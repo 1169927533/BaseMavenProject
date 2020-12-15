@@ -39,7 +39,4 @@ dependencies {
     api depend.constraintlayout()
     api "androidx.recyclerview:recyclerview:1.1.0"
     api 'com.zhpan.library:bannerview:2.2.0'
-
-
-
 }

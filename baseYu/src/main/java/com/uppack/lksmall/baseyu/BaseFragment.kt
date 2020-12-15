@@ -5,14 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.hipi.vm.LoadingObserverView
 
 /**
  *Create time 2020/9/11
  *Create Yu
  *description:基类 做了状态栏适配方案
  */
-public abstract class BaseFragment : Fragment(), LoadingObserverView {
+public abstract class BaseFragment : Fragment() {
     var mContentView: View? = null
 
 
