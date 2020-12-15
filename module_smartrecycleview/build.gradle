@@ -24,7 +24,8 @@ android {
 
 dependencies {
 
-    implementation project(":baseYu")
+    implementation 'com.github.1169927533.BaseMavenProject:baseYu:1.0'
+
     implementation depend.kotlin_core()
     implementation depend.appCompat()
     implementation depend.lifecycle_extensions()
