@@ -34,9 +34,9 @@ dependencies {
     api depend.kotlin_core()
     api depend.appCompat()
     api depend.lifecycle_extensions()
-    api "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
+    api depend.lifecycle_runtime_ktx()
     api "com.permissionx.guolindev:permissionx:1.3.1" //请求权限
     api depend.constraintlayout()
-    api "androidx.recyclerview:recyclerview:1.1.0"
+    api depend.recyclerview()
     api 'com.zhpan.library:bannerview:2.2.0'
 }

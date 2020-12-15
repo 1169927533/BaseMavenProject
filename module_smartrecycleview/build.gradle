@@ -30,10 +30,12 @@ dependencies {
     implementation depend.kotlin_core()
     implementation depend.appCompat()
     implementation depend.lifecycle_extensions()
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
+    implementation depend.lifecycle_runtime_ktx()
     implementation depend.constraintlayout()
     implementation depend.recyclerview()
 
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'
+    implementation depend.baseRecyclerViewAdapterHelper()
+ //   implementation depend.smartRefreshLayout()
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'
+
 }

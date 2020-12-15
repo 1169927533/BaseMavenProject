@@ -105,7 +105,7 @@ public class DependComp {
     }
 
     String smartRefreshLayout(){
-        return "com.scwang.smartrefresh:SmartRefreshHeader:${smartRefreshLayout}"
+        return "com.scwang.smartrefresh:SmartRefreshLayout:${smartRefreshLayout}"
     }
 
     String baseRecyclerViewAdapterHelper(){
