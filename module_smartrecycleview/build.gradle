@@ -32,7 +32,7 @@ dependencies {
     implementation depend.lifecycle_extensions()
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
     implementation depend.constraintlayout()
-    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    implementation depend.recyclerview()
 
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'

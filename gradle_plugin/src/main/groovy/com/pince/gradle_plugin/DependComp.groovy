@@ -21,6 +21,8 @@ public class DependComp {
     String lifecycle_extensions = "2.2.0"
     String lifecycle_runtime = "2.2.0"
     String recyclerview = "1.1.0"
+    String smartRefreshLayout = "1.1.0-alpha-20"
+    String baseRecyclerViewAdapterHelper = "2.9.44"
 
     String appCompat() {
         return "androidx.appcompat:appcompat:${appcompat}"
@@ -78,7 +80,7 @@ public class DependComp {
         return "com.android.support:multidex:1.0.3"
     }
 
-    String lifecycle_version() {
+    String lifecycle_runtime_ktx() {
         return "androidx.lifecycle:lifecycle-runtime-ktx:${lifecycle_version}"
     }
 
@@ -100,5 +102,13 @@ public class DependComp {
 
     String recyclerview() {
         return "androidx.recyclerview:recyclerview:${recyclerview}"
+    }
+
+    String smartRefreshLayout(){
+        return "com.scwang.smartrefresh:SmartRefreshHeader:${smartRefreshLayout}"
+    }
+
+    String baseRecyclerViewAdapterHelper(){
+        return "com.github.CymChad:BaseRecyclerViewAdapterHelper:${baseRecyclerViewAdapterHelper}"
     }
 }

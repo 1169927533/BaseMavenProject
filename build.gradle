@@ -23,6 +23,7 @@ buildscript {
 
 allprojects {
     apply plugin:'com.pince.gradle_plugin'
+
     repositories {
         google()
         jcenter()
