@@ -40,3 +40,6 @@ dependencies {
     api "androidx.recyclerview:recyclerview:1.1.0"
     api 'com.zhpan.library:bannerview:2.2.0'
 }
+task sd{
+    println("Dsadasdsa"+depend.minSdkVersion)
+}

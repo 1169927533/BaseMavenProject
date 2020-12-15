@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         minSdkVersion depend.minSdkVersion
-        println(depend.minSdkVersion)
+
         targetSdkVersion depend.targetSdkVersion
         versionCode 1
         versionName "1.0"
@@ -74,3 +74,4 @@ dependencies {
      */
     api 'com.alibaba:arouter-api:1.5.0'
 }
+

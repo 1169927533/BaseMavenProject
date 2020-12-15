@@ -2,7 +2,7 @@ public class DependComp {
     int compileSdkVersion = 29
     String buildToolsVersion = '29.0.3'
 
-    int minSdkVersion = 17
+    int minSdkVersion = 18
     int targetSdkVersion = 29
     String supportVersion = '29.1.1'
 
