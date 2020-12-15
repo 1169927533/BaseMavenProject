@@ -9,7 +9,11 @@ public class DependComp {
     boolean latest = true
     boolean thirdPartLatest = false
 
+    //模块
+    String baseYu = "1.4"  //baseYu模块
+    //--------------------------------------------------------------------
 
+    //第三方数据
     String appcompat = "1.1.0"
     String constraint_layout = "1.1.3"
     String core_ktx = "1.3.0"
@@ -23,7 +27,8 @@ public class DependComp {
     String recyclerview = "1.1.0"
     String smartRefreshLayout = "1.1.0-alpha-20"
     String baseRecyclerViewAdapterHelper = "2.9.44"
-
+    String permissionx = "1.3.1" //rxpermission去请求网络
+    //--------------------------------------------------------------------
     String appCompat() {
         return "androidx.appcompat:appcompat:${appcompat}"
     }
@@ -104,11 +109,27 @@ public class DependComp {
         return "androidx.recyclerview:recyclerview:${recyclerview}"
     }
 
-    String smartRefreshLayout(){
+    String smartRefreshLayout() {
         return "com.scwang.smartrefresh:SmartRefreshLayout:${smartRefreshLayout}"
     }
 
-    String baseRecyclerViewAdapterHelper(){
+    String baseRecyclerViewAdapterHelper() {
         return "com.github.CymChad:BaseRecyclerViewAdapterHelper:${baseRecyclerViewAdapterHelper}"
+    }
+
+    String baseYu() {
+        return "com.github.1169927533.BaseMavenProject:baseYu:${baseYu}"
+    }
+
+    String baseYu(String version) {
+        return "com.github.1169927533.BaseMavenProject:baseYu:${version}"
+    }
+
+    String permissionx() {
+        return "com.permissionx.guolindev:permissionx:${permissionx}"
+    }
+
+    String permissionx(String version) {
+        return "com.permissionx.guolindev:permissionx:${version}"
     }
 }
