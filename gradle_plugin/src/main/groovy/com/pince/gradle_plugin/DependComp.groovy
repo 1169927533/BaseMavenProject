@@ -28,6 +28,8 @@ public class DependComp {
     String smartRefreshLayout = "1.1.0-alpha-20"
     String baseRecyclerViewAdapterHelper = "2.9.44"
     String permissionx = "1.3.1" //rxpermission去请求网络
+    String glide_version = "4.11.0"
+    String glide_compiler_version = "2.0"
     //--------------------------------------------------------------------
     String appCompat() {
         return "androidx.appcompat:appcompat:${appcompat}"
@@ -131,5 +133,18 @@ public class DependComp {
 
     String permissionx(String version) {
         return "com.permissionx.guolindev:permissionx:${version}"
+    }
+
+    String glide_version(){
+        return "com.github.bumptech.glide:glide:${glide_version}"
+    }
+    String glide_version(String version){
+        return "com.github.bumptech.glide:glide:${version}"
+    }
+    String glide_compiler(){
+        return "com.github.bumptech.glide:compiler:${glide_compiler_version}"
+    }
+    String glide_compiler(String version){
+        return "com.github.bumptech.glide:compiler:${version}"
     }
 }
