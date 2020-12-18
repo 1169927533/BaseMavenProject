@@ -6,6 +6,11 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.pince.module_customview.R
 import kotlin.math.cos
 import kotlin.math.min
@@ -158,20 +163,32 @@ class PentagonalView : androidx.appcompat.widget.AppCompatImageView {
 
     fun loadUrlImg(url: String) {
         post {
-         /*   Glide.with(this).load(url)
+            Glide.with(this).load(url)
                     //  .apply(RequestOptions.bitmapTransform(PentagonaltTransform()))
                     .transform(PentagonaltTransform(parentWidth.toFloat()))
                     .listener(object : RequestListener<Drawable> {
-                        override fun onLoadFailed(p0: GlideException?, p1: Any?, p2: Target<Drawable>?, p3: Boolean): Boolean {
-                            setDefaultDrawable()//当遇到网络图片加载错的时候 去加载默认的图片
+                        override fun onLoadFailed(
+                            p0: GlideException?,
+                            p1: Any?,
+                            p2: Target<Drawable>?,
+                            p3: Boolean
+                        ): Boolean {
+                            setDefaultDrawable()
                             return false
                         }
 
-                        override fun onResourceReady(p0: Drawable?, p1: Any?, p2: Target<Drawable>?, p3: DataSource?, p4: Boolean): Boolean {
+                        override fun onResourceReady(
+                            p0: Drawable?,
+                            p1: Any?,
+                            p2: Target<Drawable>?,
+                            p3: DataSource?,
+                            p4: Boolean
+                        ): Boolean {
                             return false
+
                         }
                     })
-                    .into(this)*/
+                    .into(this)
         }
 
     }

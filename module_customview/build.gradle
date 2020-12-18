@@ -16,6 +16,7 @@ android {
 
     buildTypes {
         release {
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -34,4 +35,8 @@ dependencies {
 
     implementation depend.baseRecyclerViewAdapterHelper()
     implementation depend.smartRefreshLayout()
+
+    annotationProcessor depend.glide_compiler("4.11.0")
+    implementation depend.glide_version()
+
 }
