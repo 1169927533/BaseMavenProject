@@ -46,6 +46,10 @@ allprojects {
 
 ## 新增展示六边形的自定义view
 
+效果：
+
+<img src="picture/m.jpg" width = "200" height = "400" alt="g1" style="zoom: 50%;" />
+
 ```
  <!--六边形-->
     <declare-styleable name="hexagon">
