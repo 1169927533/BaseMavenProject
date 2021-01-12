@@ -11,6 +11,7 @@ public class DependComp {
 
     //模块
     String baseYu = "1.4"  //baseYu模块
+    String lib_crash = "1.4.2"
     //--------------------------------------------------------------------
 
     //第三方数据
@@ -127,6 +128,14 @@ public class DependComp {
         return "com.github.1169927533.BaseMavenProject:baseYu:${version}"
     }
 
+    String lib_crash( ) {
+        return "com.github.1169927533.BaseMavenProject:lib_crash:$lib_crash"
+    }
+
+    String lib_crash(String version) {
+        return "com.github.1169927533.BaseMavenProject:lib_crash:${version}"
+    }
+
     String permissionx() {
         return "com.permissionx.guolindev:permissionx:${permissionx}"
     }
@@ -135,16 +144,19 @@ public class DependComp {
         return "com.permissionx.guolindev:permissionx:${version}"
     }
 
-    String glide_version(){
+    String glide_version() {
         return "com.github.bumptech.glide:glide:${glide_version}"
     }
-    String glide_version(String version){
+
+    String glide_version(String version) {
         return "com.github.bumptech.glide:glide:${version}"
     }
-    String glide_compiler(){
+
+    String glide_compiler() {
         return "com.github.bumptech.glide:compiler:${glide_compiler_version}"
     }
-    String glide_compiler(String version){
+
+    String glide_compiler(String version) {
         return "com.github.bumptech.glide:compiler:${version}"
     }
 }
