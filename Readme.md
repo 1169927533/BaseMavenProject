@@ -1,8 +1,9 @@
 # 这是我的一个仓库工程
 在自己的工程里面想要使用的话方式如下：
 在根build.gradle里面添加：
-
-```
+<details>
+<summary>点开查看源码</summary>
+<pre><code>
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext.kotlin_version = "1.4.10"
@@ -42,7 +43,9 @@ allprojects {
 
     }
 }
-```
+</code></pre>
+</details>
+
 
 ## 新增展示六边形的自定义view
 
