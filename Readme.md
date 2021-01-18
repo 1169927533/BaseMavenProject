@@ -116,6 +116,10 @@ dependencies {
 我们只需要新建一个adapter继承自BaseTabAdapter 实现方法 getView 和 onPageSelected
 在getView里面记得要手动促发clickItem方法。
 
+效果：
+
+<img src="picture/m2.gif" width = "200" height = "400" alt="g1" style="zoom: 50%;" />
+
 xml:
 <details>
 <summary>点开查看源码</summary>
@@ -191,6 +195,7 @@ kotlin：
    
 </code></pre>
 </details>
+
 
 
 
