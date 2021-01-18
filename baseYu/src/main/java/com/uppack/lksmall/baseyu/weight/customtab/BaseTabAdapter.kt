@@ -7,9 +7,9 @@ import androidx.viewpager.widget.ViewPager
 /**
  *Create time 2020/9/11
  *Create Yu
- *description:
+ *description: 导航栏的基类适配器
  */
-abstract class BaseTabAdapter(private val item: List<Any>,private val viewPager: ViewPager) {
+abstract class BaseTabAdapter(private val item: List<Any>, private val viewPager: ViewPager) {
     var itemViewWidth = 0
     var targetListView = ArrayList<View>()
 
@@ -20,17 +20,23 @@ abstract class BaseTabAdapter(private val item: List<Any>,private val viewPager:
 
     abstract fun getView(context: Context, position: Int): View //获取指定view
 
+    fun setViewToPosition(context: Context, position: Int): View {
+        var view = getView(context, position)
+        targetListView.add(view)
+        return view
+    }
+
     open fun getAllTargetView(): List<View> {//获取全部指定View
         return targetListView
     }
 
-    open fun clickItem(position: Int){//item的点击事件
+    open fun clickItem(position: Int) {//item的点击事件
         viewPager.currentItem = position
     }
 
 
-    open fun onPageScrollStateChangedd(state: Int){}
-    open fun onPageScrolledd(position: Int, positionOffset: Float, positionOffsetPixels: Int){}
+    open fun onPageScrollStateChangedd(state: Int) {}
+    open fun onPageScrolledd(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
     abstract fun onPageSelected(position: Int) //当某个item被选中 该变状态
 
 
