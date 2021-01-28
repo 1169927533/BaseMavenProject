@@ -52,24 +52,31 @@ class CustomTabLayout : RelativeLayout {
         typeArray.recycle()
     }
 
+    var view2: ViewGroup? = null
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
         itemWidthList.clear()
-        var view = getChildAt(0) as ViewGroup
-        var view2 = view.getChildAt(0) as ViewGroup
-
-        for (index in 0 until view2.childCount) {
-            var views = view2.getChildAt(index)
-            itemWidthList.add(
-                ItemDataBean(
-                    views.measuredWidth,
-                    theWidth,
-                    theWidth + views.measuredWidth
-                )
-            )
-            theWidth += views.measuredWidth + itemMarginRight.toInt()
+        if (childCount > 0) {
+            var view = getChildAt(0) as ViewGroup
+            if (view.childCount > 0) {
+                view2 = view.getChildAt(0) as ViewGroup
+            }
         }
-        theWidth = 0
+        view2?.let {
+            for (index in 0 until it.childCount) {
+                var views = it.getChildAt(index)
+                itemWidthList.add(
+                    ItemDataBean(
+                        views.measuredWidth,
+                        theWidth,
+                        theWidth + views.measuredWidth
+                    )
+                )
+                theWidth += views.measuredWidth + itemMarginRight.toInt()
+            }
+            theWidth = 0
+        }
+
     }
 
     fun setAdapter(adapter: BaseTabAdapter, viewPager: ViewPager, selectItem: Int) {
