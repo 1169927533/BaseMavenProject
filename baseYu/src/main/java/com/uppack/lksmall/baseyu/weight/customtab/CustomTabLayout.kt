@@ -3,6 +3,7 @@ package com.uppack.lksmall.baseyu.weight.customtab
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.viewpager.widget.ViewPager
 import com.uppack.lksmall.baseyu.R
+import kotlin.math.abs
 
 /**
  *Create time 2020/9/11
@@ -30,8 +32,9 @@ class CustomTabLayout : RelativeLayout {
     var bottomlineheight = 0f//底部线的高度
     var bottomlinecolor = 0//底部线的高度
     var horizontalScrollView: CusHorizontalScrollView? = null
-    var itemViewWidth: Int = 0
     var mContext: Context? = null
+    var itemWidthList = ArrayList<ItemDataBean>()
+    var theWidth = 0
 
     constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet) {
         mContext = context
@@ -47,6 +50,26 @@ class CustomTabLayout : RelativeLayout {
         )
 
         typeArray.recycle()
+    }
+
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        super.onSizeChanged(w, h, oldw, oldh)
+        itemWidthList.clear()
+        var view = getChildAt(0) as ViewGroup
+        var view2 = view.getChildAt(0) as ViewGroup
+
+        for (index in 0 until view2.childCount) {
+            var views = view2.getChildAt(index)
+            itemWidthList.add(
+                ItemDataBean(
+                    views.measuredWidth,
+                    theWidth,
+                    theWidth + views.measuredWidth
+                )
+            )
+            theWidth += views.measuredWidth + itemMarginRight.toInt()
+        }
+        theWidth = 0
     }
 
     fun setAdapter(adapter: BaseTabAdapter, viewPager: ViewPager, selectItem: Int) {
@@ -65,7 +88,6 @@ class CustomTabLayout : RelativeLayout {
 
         for (index in 0 until adapter.getCount()) {
             var view = adapter.getView(mContext!!, index)
-            itemViewWidth = adapter.itemViewWidth
             if (index <= adapter.getCount() - 2) {
                 view.layoutParams?.let {
                     var params = it as LinearLayout.LayoutParams
@@ -170,45 +192,49 @@ class CustomTabLayout : RelativeLayout {
     }
 
     private fun onPageLayoutSelected(position: Int) {
-        if (canSmoothToRight(position) && (position + 2) * itemViewWidth > width) {
+        if (canSmoothToRight(position) && (position + 2) * itemWidthList[position].itemWidth > width) {
 
         }
     }
 
     private fun canSmoothToRight(position: Int): Boolean {
-        return (mAdapter.getCount() - position) * itemViewWidth >= width
+        return (mAdapter.getCount() - position) * itemWidthList[position].itemWidth >= width
     }
 
-    private fun onPageScrollChanged(position: Int, positionOffset: Float) {
-        if (mAdapter != null) {
-            horizontalScrollView?.let {
-                // 手指跟随滚动
-                if (position >= 0 && position < mAdapter.getCount()) {
+    private fun onPageScrollChanged(
+        position: Int,
+        positionOffset: Float,
+    ) {
+        horizontalScrollView?.let {
+            // 手指跟随滚动
+            if (position >= 0 && position < mAdapter.getCount()) {
+                val currentPosition =
+                    (mAdapter.getCount() - 1).coerceAtMost(position)
+                val nextPosition =
+                    (mAdapter.getCount() - 1).coerceAtMost(position + 1)
 
-                    val currentPosition =
-                        (mAdapter.getCount() - 1).coerceAtMost(position)
-                    val nextPosition =
-                        (mAdapter.getCount() - 1).coerceAtMost(position + 1)
+                /**
+                 * startX 第一个item需要移动的距离
+                 */
+                var startX =
+                    itemWidthList[currentPosition].leftDistance - it.width / 2 + itemWidthList[currentPosition].itemWidth / 2
 
-                    val scrollTo: Float =
-                        ((currentPosition * itemViewWidth) + itemViewWidth / 2) + itemMarginRight - it.width * (0.5f)
+                /**
+                 * scrollDistance  下一个item中心 距离 上一个item中心 需要移动的距离
+                 */
+                var scrollDistance =
+                    (itemWidthList[nextPosition].leftDistance - itemWidthList[currentPosition].leftDistance + itemWidthList[nextPosition].itemWidth / 2f - itemWidthList[currentPosition].itemWidth / 2f) * positionOffset
+                it.scrollTo(
+                    (startX + scrollDistance).toInt(),
+                    0
+                )
 
-                    val nextScrollTo: Float =
-                        ((nextPosition * itemViewWidth) + itemViewWidth / 2) + itemMarginRight - it.width * (0.5f)
-
-
-                    it.scrollTo(
-                        (scrollTo + (nextScrollTo - scrollTo) * positionOffset).toInt(),
-                        0
-                    )
-                }
             }
-
-
         }
 
 
     }
+
 
     class CusHorizontalScrollView : HorizontalScrollView {
         private var onScrollChangedListener: OnScrollChangedListener? = null
