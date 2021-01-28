@@ -58,13 +58,12 @@ class CustomTabLayout : RelativeLayout {
         super.onSizeChanged(w, h, oldw, oldh)
         itemWidthList.clear()
         if (childCount > 0) {
-            if (hasBottomLine) {
-                view = getChildAt(1) as ViewGroup
-
+            view = if (hasBottomLine && childCount > 2) {
+                getChildAt(1) as ViewGroup
             } else {
-                view = getChildAt(0) as ViewGroup
+                getChildAt(0) as ViewGroup
             }
-            view?.let{
+            view?.let {
                 if (it.childCount > 0) {
                     view2 = it.getChildAt(0) as ViewGroup
                 }
@@ -207,7 +206,7 @@ class CustomTabLayout : RelativeLayout {
     }
 
     private fun onPageLayoutSelected(position: Int) {
-        if (canSmoothToRight(position) && (position + 2) * itemWidthList[position].itemWidth > width) {
+        if (itemWidthList.size > 0 && canSmoothToRight(position) && (position + 2) * itemWidthList[position].itemWidth > width) {
 
         }
     }
@@ -222,7 +221,7 @@ class CustomTabLayout : RelativeLayout {
     ) {
         horizontalScrollView?.let {
             // 手指跟随滚动
-            if (position >= 0 && position < mAdapter.getCount()) {
+            if (itemWidthList.size > 0 && position >= 0 && position < mAdapter.getCount()) {
                 val currentPosition =
                     (mAdapter.getCount() - 1).coerceAtMost(position)
                 val nextPosition =
