@@ -58,7 +58,7 @@ class CustomTabLayout : RelativeLayout {
         super.onSizeChanged(w, h, oldw, oldh)
         itemWidthList.clear()
         if (childCount > 0) {
-            view = if (hasBottomLine && childCount > 2) {
+            view = if (hasBottomLine && childCount > 1) {
                 getChildAt(1) as ViewGroup
             } else {
                 getChildAt(0) as ViewGroup
