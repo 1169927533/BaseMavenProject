@@ -52,14 +52,22 @@ class CustomTabLayout : RelativeLayout {
         typeArray.recycle()
     }
 
+    var view: ViewGroup? = null
     var view2: ViewGroup? = null
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
         itemWidthList.clear()
         if (childCount > 0) {
-            var view = getChildAt(0) as ViewGroup
-            if (view.childCount > 0) {
-                view2 = view.getChildAt(0) as ViewGroup
+            if (hasBottomLine) {
+                view = getChildAt(1) as ViewGroup
+
+            } else {
+                view = getChildAt(0) as ViewGroup
+            }
+            view?.let{
+                if (it.childCount > 0) {
+                    view2 = it.getChildAt(0) as ViewGroup
+                }
             }
         }
         view2?.let {
@@ -210,7 +218,7 @@ class CustomTabLayout : RelativeLayout {
 
     private fun onPageScrollChanged(
         position: Int,
-        positionOffset: Float,
+        positionOffset: Float
     ) {
         horizontalScrollView?.let {
             // 手指跟随滚动
