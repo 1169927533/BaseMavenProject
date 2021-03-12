@@ -16,7 +16,7 @@ abstract class BaseTabAdapter(private val item: List<Any>, private val viewPager
 
     //获取总个数
     open fun getCount(): Int {
-        return item.size
+        return  item.size
     }
 
     abstract fun getView(context: Context, position: Int): View //获取指定view
