@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--顶部菜单栏-->
+    <declare-styleable name="customTabv">
+        <attr name="hasBottomLine" format="boolean" />
+        <attr name="average" format="boolean" />
+        <attr name="itemmarginright" format="dimension" />
+
+        <attr name="bottomlinewidth" format="dimension" />
+        <attr name="bottomlineheight" format="dimension" />
+        <attr name="bottomlinecolor" format="reference" />
+    </declare-styleable>
+
+
+</resources>
