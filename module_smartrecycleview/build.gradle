@@ -35,5 +35,5 @@ dependencies {
     implementation depend.recyclerview()
 
     implementation depend.baseRecyclerViewAdapterHelper()
-    implementation depend.smartRefreshLayout()
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'
 }
