@@ -1,6 +1,5 @@
 package com.example.smart.smartpack.base.fragme
 
-import android.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +9,7 @@ import android.view.ViewGroup
  *Create Yu
  *description:
  */
-abstract class BaseFrameFragment : Fragment() {
+abstract class BaseFrameFragment : androidx.fragment.app.Fragment() {
 
 
     abstract fun getLayoutId(): Int
