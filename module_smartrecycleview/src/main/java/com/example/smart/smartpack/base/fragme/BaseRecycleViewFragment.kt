@@ -45,6 +45,7 @@ abstract class BaseRecycleViewFragment<T> : BaseVmMeFragment() {
 
     override fun initViewData() {
         frameLayout.addView(emptyView, 0)
+        initRefreshConfig()
         initRecycleviewLayout()
     }
 
@@ -87,14 +88,12 @@ abstract class BaseRecycleViewFragment<T> : BaseVmMeFragment() {
         }
     })
 
-   open fun setRecycleViewItemDirection() {
+    open fun setRecycleViewItemDirection() {
 
     }
 
     private fun initRecycleviewLayout() {
-        //修改阻尼效果（0 - 1），越小阻尼越大，默认0.5
-        smartRefreshLayout_fans.setDragRate(0.6f);
-        smartRefreshLayout_fans.setRefreshHeader(ClassicsHeader(requireContext()))
+
         recycleview = recycleview_fans
         recycleview.setOnTouchListener { _, event -> gestureDetector.onTouchEvent(event) }
         recycleview_fans.layoutManager = layoutManager
@@ -107,6 +106,11 @@ abstract class BaseRecycleViewFragment<T> : BaseVmMeFragment() {
 
     }
 
+    public fun initRefreshConfig() {
+        //修改阻尼效果（0 - 1），越小阻尼越大，默认0.5
+        smartRefreshLayout_fans.setDragRate(0.6f);
+        smartRefreshLayout_fans.setRefreshHeader(ClassicsHeader(requireContext()))
+    }
 
     override fun onResume() {
         super.onResume()
