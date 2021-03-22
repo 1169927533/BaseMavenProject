@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_base_recycleview.*
  *Create Yu
  *description:
  */
-abstract class BaseRecycleViewActivity<T> : BaseActivity() {
+abstract class BaseRecycleViewActivity<T> : BaseYuActivity() {
 
     //无数据展示效果
     open val emptyView: View by lazy {
