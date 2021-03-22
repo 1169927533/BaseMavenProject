@@ -66,7 +66,7 @@ abstract class BaseRecycleViewActivity<T> : BaseYuActivity() {
         recycleview_fans.layoutManager = LinearLayoutManager(this)
         recycleview_fans.adapter = baseAdapter
 
-        smartRefreshUtil = SmartRefreshMeUtil(
+         smartRefreshUtil = SmartRefreshMeUtil(
             baseAdapter, recycleview_fans, smartRefreshLayout_fans,
             true, true, 1, onFetchListener
         )
