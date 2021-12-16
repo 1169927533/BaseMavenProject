@@ -160,13 +160,10 @@ class CustomTabLayout : RelativeLayout {
         }
         var navHeight = lineHeight.toInt()
         var layoutParams = RelativeLayout.LayoutParams(navWidth, navHeight)
-
         if (hasBottomLine) {
-            navLineView.layoutParams = layoutParams
-            val lp = LayoutParams(navWidth, navHeight)
-            lp.addRule(ALIGN_PARENT_BOTTOM, TRUE)
-            lp.bottomMargin = navBottomMargin.toInt()
-            addView(navLineView, lp)
+            layoutParams.addRule(ALIGN_PARENT_BOTTOM, TRUE)
+            layoutParams.bottomMargin = navBottomMargin.toInt()
+            addView(navLineView, layoutParams)
             moveBar(navLineView, navWidth, 0f, currentPosition)
         }
     }
@@ -188,7 +185,7 @@ class CustomTabLayout : RelativeLayout {
         var marginleftt = position * wioiii + (wioiii * percent).toInt() + (widthh - navWidth) / 2
 
         lp.width = (navWidth - percent * 2).toInt()
-        lp.setMargins((marginleftt + percent).toInt(), 0, percent.toInt(), 0)
+        lp.setMargins((marginleftt + percent).toInt(), 0, percent.toInt(), navBottomMargin.toInt())
         line.requestLayout()
 
 
