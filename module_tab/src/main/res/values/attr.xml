@@ -9,6 +9,7 @@
         <attr name="bottomlinewidth" format="dimension" />
         <attr name="bottomlineheight" format="dimension" />
         <attr name="bottomlinecolor" format="reference" />
+        <attr name="bottomLineMargin" format="reference"/>
     </declare-styleable>
 
 

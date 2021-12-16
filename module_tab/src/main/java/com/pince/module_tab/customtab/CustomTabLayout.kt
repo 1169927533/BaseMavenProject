@@ -23,6 +23,7 @@ import com.pince.module_tab.customtab.ItemDataBean
 class CustomTabLayout : RelativeLayout {
 
     var navWidth = 0
+    var navBottomMargin = 0f
     var widthSpace: Int = 0
     lateinit var navLineView: View
     lateinit var mAdapter: BaseTabAdapter
@@ -39,11 +40,12 @@ class CustomTabLayout : RelativeLayout {
 
     constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet) {
         mContext = context
-        var typeArray = context.obtainStyledAttributes(attributeSet,R.styleable.customTabv)
+        var typeArray = context.obtainStyledAttributes(attributeSet, R.styleable.customTabv)
         hasBottomLine = typeArray.getBoolean(R.styleable.customTabv_hasBottomLine, true)
         average = typeArray.getBoolean(R.styleable.customTabv_average, true)
         itemMarginRight = typeArray.getDimension(R.styleable.customTabv_itemmarginright, 0f)
         bottomlinewidth = typeArray.getDimension(R.styleable.customTabv_bottomlinewidth, 0f)
+        navBottomMargin = typeArray.getDimension(R.styleable.customTabv_bottomLineMargin, 0f)
         bottomlineheight = typeArray.getDimension(R.styleable.customTabv_bottomlineheight, 0f)
         bottomlinecolor = typeArray.getResourceId(
             R.styleable.customTabv_bottomlinecolor,
@@ -160,10 +162,10 @@ class CustomTabLayout : RelativeLayout {
         var layoutParams = RelativeLayout.LayoutParams(navWidth, navHeight)
 
         if (hasBottomLine) {
+            layoutParams.bottomMargin = navBottomMargin.toInt()
             navLineView.layoutParams = layoutParams
             val lp = LayoutParams(navWidth, navHeight)
             lp.addRule(ALIGN_PARENT_BOTTOM, TRUE)
-
             addView(navLineView, lp)
             moveBar(navLineView, navWidth, 0f, currentPosition)
         }
