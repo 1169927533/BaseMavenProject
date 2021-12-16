@@ -162,10 +162,10 @@ class CustomTabLayout : RelativeLayout {
         var layoutParams = RelativeLayout.LayoutParams(navWidth, navHeight)
 
         if (hasBottomLine) {
-            layoutParams.bottomMargin = navBottomMargin.toInt()
             navLineView.layoutParams = layoutParams
             val lp = LayoutParams(navWidth, navHeight)
             lp.addRule(ALIGN_PARENT_BOTTOM, TRUE)
+            lp.bottomMargin = navBottomMargin.toInt()
             addView(navLineView, lp)
             moveBar(navLineView, navWidth, 0f, currentPosition)
         }
