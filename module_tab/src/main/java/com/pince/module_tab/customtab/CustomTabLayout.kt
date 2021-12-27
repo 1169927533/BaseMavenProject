@@ -58,7 +58,7 @@ class CustomTabLayout : RelativeLayout {
     var view2: ViewGroup? = null
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        initData()
+        //initData()
     }
 
     fun setAdapter(adapter: BaseTabAdapter, viewPager: ViewPager, selectItem: Int) {
