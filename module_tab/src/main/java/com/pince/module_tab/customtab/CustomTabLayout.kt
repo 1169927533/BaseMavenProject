@@ -51,7 +51,6 @@ class CustomTabLayout : RelativeLayout {
             R.styleable.customTabv_bottomlinecolor,
             R.drawable.shape_f04989
         )
-
         typeArray.recycle()
     }
 
@@ -59,34 +58,7 @@ class CustomTabLayout : RelativeLayout {
     var view2: ViewGroup? = null
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        itemWidthList.clear()
-        if (childCount > 0) {
-            view = if (hasBottomLine && childCount > 1) {
-                getChildAt(1) as ViewGroup
-            } else {
-                getChildAt(0) as ViewGroup
-            }
-            view?.let {
-                if (it.childCount > 0) {
-                    view2 = it.getChildAt(0) as ViewGroup
-                }
-            }
-        }
-        view2?.let {
-            for (index in 0 until it.childCount) {
-                var views = it.getChildAt(index)
-                itemWidthList.add(
-                    ItemDataBean(
-                        views.measuredWidth,
-                        theWidth,
-                        theWidth + views.measuredWidth
-                    )
-                )
-                theWidth += views.measuredWidth + itemMarginRight.toInt()
-            }
-            theWidth = 0
-        }
-
+        initData()
     }
 
     fun setAdapter(adapter: BaseTabAdapter, viewPager: ViewPager, selectItem: Int) {
@@ -137,6 +109,9 @@ class CustomTabLayout : RelativeLayout {
         horizontalScrollView!!.addView(titleLayout, layoutParams2)
         horizontalScrollView!!.isHorizontalScrollBarEnabled = false
         addView(horizontalScrollView, lp1)
+        post {
+            initData()
+        }
     }
 
     private fun initBottomView() {
@@ -160,6 +135,7 @@ class CustomTabLayout : RelativeLayout {
         }
         var navHeight = lineHeight.toInt()
         var layoutParams = RelativeLayout.LayoutParams(navWidth, navHeight)
+
         if (hasBottomLine) {
             layoutParams.addRule(ALIGN_PARENT_BOTTOM, TRUE)
             layoutParams.bottomMargin = navBottomMargin.toInt()
@@ -183,12 +159,9 @@ class CustomTabLayout : RelativeLayout {
         var widthh = (width - itemMarginRight * (mAdapter.getCount() - 1)) / mAdapter.getCount()
         var wioiii = (widthh + itemMarginRight)
         var marginleftt = position * wioiii + (wioiii * percent).toInt() + (widthh - navWidth) / 2
-
         lp.width = (navWidth - percent * 2).toInt()
         lp.setMargins((marginleftt + percent).toInt(), 0, percent.toInt(), navBottomMargin.toInt())
         line.requestLayout()
-
-
     }
 
     private fun initViewPager(mViewPager: ViewPager) {
@@ -276,5 +249,36 @@ class CustomTabLayout : RelativeLayout {
 
     interface OnScrollChangedListener {
         fun onScrollChanged(l: Int, t: Int, oldl: Int, oldt: Int)
+    }
+
+    private fun initData() {
+        itemWidthList.clear()
+        theWidth = 0
+        if (childCount > 0) {
+            view = if (hasBottomLine && childCount > 1) {
+                getChildAt(1) as ViewGroup
+            } else {
+                getChildAt(0) as ViewGroup
+            }
+            view?.let {
+                if (it.childCount > 0) {
+                    view2 = it.getChildAt(0) as ViewGroup
+                }
+            }
+        }
+        view2?.let {
+            for (index in 0 until it.childCount) {
+                var views = it.getChildAt(index)
+                itemWidthList.add(
+                    ItemDataBean(
+                        views.measuredWidth,
+                        theWidth,
+                        theWidth + views.measuredWidth
+                    )
+                )
+                theWidth += views.measuredWidth + itemMarginRight.toInt()
+            }
+            theWidth = 0
+        }
     }
 }
